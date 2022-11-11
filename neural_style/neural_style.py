@@ -151,9 +151,9 @@ def train(args):
                               'total_loss': total_loss.item()}
                 save_checkpoint(checkpoint, ckpt_model_path)
 
-                with torch.no_grad():
-                    for img in y:
-                        utils.save_image(f'transform/epoch_{epoch}_batch_id_{batch_idx}.jpg', img.to('cpu'))
+                # with torch.no_grad():
+                #     for img in y:
+                #         utils.save_image(f'transform/epoch_{epoch}_batch_id_{batch_idx}.jpg', img.to('cpu'))
 
                 transformer.to(device).train()
 
@@ -238,8 +238,6 @@ def main():
     train_arg_parser.add_argument("--dataset", type=str, required=True,
                                   help="path to training dataset, the path should point to a folder "
                                        "containing another folder with all the training images")
-    train_arg_parser.add_argument("--path-csv", type=str, required=True,
-                                  help="Chua lop cua data training")
     train_arg_parser.add_argument("--style-image", type=str, default="images/style-images/mosaic.jpg",
                                   help="path to style-image")
     train_arg_parser.add_argument("--save-model-dir", type=str, required=True,

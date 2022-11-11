@@ -25,7 +25,7 @@ def denormalize(tensors):
 
 def deprocess(image_tensor):
     """ Denormalizes and rescales image tensor """
-    img = denormalize(image_tensor)[0]
+    img = denormalize(image_tensor)
     img *= 255
     image_np = torch.clamp(img, 0, 255).numpy().astype(np.uint8)
     image_np = image_np.transpose(1, 2, 0)
