@@ -81,7 +81,7 @@ def train(args):
     style = style.repeat(args.batch_size, 1, 1, 1).to(device)
 
     # Calculate features and gram matrix of style image
-    features_style = vgg(utils.normalize_batch(style))
+    features_style = vgg(style)
     gram_style = [utils.gram_matrix(y) for y in features_style]
 
     # Load check point
