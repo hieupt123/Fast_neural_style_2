@@ -103,7 +103,7 @@ def train(args):
     """ Sample 8 images for visual evaluation of the model """
     image_samples = []
     for path in random.sample(glob.glob(f"{args.dataset}/*/*.jpg"), 8):
-        image_sample = utils.load_image(path, size=args.style_size)
+        image_sample = utils.load_image(path, size=args.image_size)
         image_sample = style_transform(image_sample)
         image_samples += [image_sample]
     image_samples = torch.stack(image_samples)
