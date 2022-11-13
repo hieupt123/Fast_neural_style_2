@@ -14,10 +14,18 @@ import utils
 from transformer_net import TransformerNet
 from vgg import Vgg16
 import sys
+import random
+import glob
+from torchvision.utils import save_image
 
-mean = np.array([0.4764, 0.4504, 0.4100])
-std = np.array([0.2707, 0.2657, 0.2808])
+mean = [0.4763, 0.4507, 0.4094]
+std = [0.2702, 0.2652, 0.2811]
 
+def denormalize(tensors):
+    """ Denormalizes image tensors using mean and std """
+    for c in range(3):
+        tensors[:, c].mul_(std[c]).add_(mean[c])
+    return tensors
 
 def check_paths(args):
     try:
@@ -92,6 +100,23 @@ def train(args):
         current_epoch = 0
         start_batch_idx = 0
 
+    """ Sample 8 images for visual evaluation of the model """
+    image_samples = []
+    for path in random.sample(glob.glob(f"{args.dataset}/*/*.jpg"), 8):
+        image_sample = utils.load_image(path, size=args.style_size)
+        image_sample = style_transform(image_sample)
+        image_samples += [image_sample]
+    image_samples = torch.stack(image_samples)
+
+    def save_sample(epoch, batch_id):
+        """ Evaluates the model and saves image samples """
+        transformer.eval()
+        with torch.no_grad():
+            output = transformer(image_samples.to(device))
+        image_grid = denormalize(torch.cat((image_samples.cpu(), output.cpu()), 2))
+        save_image(image_grid, f"./images/outputs/epoch_{epoch}_batch_id_{batch_id}.jpg", nrow=4)
+        transformer.train()
+
     ##################
     for epoch in range(current_epoch, args.epochs):
         transformer.train()
@@ -140,6 +165,7 @@ def train(args):
                                   content_loss.item(), style_loss.item(),
                                   total_loss.item()
                 )
+                save_sample(epoch,batch_idx)
                 print(mesg)
 
             if args.checkpoint_model_dir is not None and (batch_idx + 1) % args.checkpoint_interval == 0:
@@ -148,12 +174,9 @@ def train(args):
                 ckpt_model_path = os.path.join(args.checkpoint_model_dir, ckpt_model_filename)
                 checkpoint = {'state_dict': transformer.state_dict(), 'optimizer': optimizer.state_dict(),
                               'current_epoch': epoch, 'start_batch_idx': batch_idx + 1,
+                              'content_loss': content_loss.item(), 'style_loss': style_loss.item(),
                               'total_loss': total_loss.item()}
                 save_checkpoint(checkpoint, ckpt_model_path)
-
-                # with torch.no_grad():
-                #     for img in y:
-                #         utils.save_image(f'transform/epoch_{epoch}_batch_id_{batch_idx}.jpg', img.to('cpu'))
 
                 transformer.to(device).train()
 

@@ -3,8 +3,8 @@ from PIL import Image
 import numpy as np
 
 
-mean = np.array([0.4764, 0.4504, 0.4100])
-std = np.array([0.2707, 0.2657, 0.2808])
+mean = [0.4763, 0.4507, 0.4094]
+std = [0.2702, 0.2652, 0.2811]
 
 def load_image(filename, size=None, scale=None):
     img = Image.open(filename).convert('RGB')
