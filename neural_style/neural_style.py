@@ -88,6 +88,10 @@ def train(args):
     style = style_transform(style)
     style = style.repeat(args.batch_size, 1, 1, 1).to(device)
 
+    name_style = args.style_image.split("/")[-1]
+    name_style = name_style.split(".")[-1]
+    print(name_style)
+
     # Calculate features and gram matrix of style image
     features_style = vgg(style)
     gram_style = [utils.gram_matrix(y) for y in features_style]
@@ -100,9 +104,9 @@ def train(args):
         current_epoch = 0
         start_batch_idx = 0
 
-    """ Sample 8 images for visual evaluation of the model """
+    """ Get Sample """
     image_samples = []
-    for path in random.sample(glob.glob(f"{args.dataset}/*/*.jpg"), 8):
+    for path in glob.glob("/Fast_neural_style_images/content-images/*.jpg"):
         image_sample = utils.load_image(path, size=args.image_size)
         image_sample = style_transform(image_sample)
         image_samples += [image_sample]
@@ -114,7 +118,10 @@ def train(args):
         with torch.no_grad():
             output = transformer(image_samples.to(device))
         image_grid = denormalize(torch.cat((image_samples.cpu(), output.cpu()), 2))
-        save_image(image_grid, f"./images/outputs/epoch_{epoch}_batch_id_{batch_id}.jpg", nrow=4)
+        path_save_image_test = os.path.join(args.checkpoint_model_dir, "test")
+        if os.path.exists(path_save_image_test) == False:
+            os.makedirs(path_save_image_test)
+        save_image(image_grid, f"{path_save_image_test}/epoch_{epoch}_batch_id_{batch_id}.jpg", nrow=4)
         transformer.train()
 
     ##################
@@ -170,7 +177,7 @@ def train(args):
 
             if args.checkpoint_model_dir is not None and (batch_idx + 1) % args.checkpoint_interval == 0:
                 transformer.eval().cpu()
-                ckpt_model_filename = "ckpt_epoch_" + str(epoch) + "_batch_id_" + str(batch_idx + 1) + ".pth.tar"
+                ckpt_model_filename = f"{name_style}_ckpt_epoch_" + str(epoch) + "_batch_id_" + str(batch_idx + 1) + ".pth.tar"
                 ckpt_model_path = os.path.join(args.checkpoint_model_dir, ckpt_model_filename)
                 checkpoint = {'state_dict': transformer.state_dict(), 'optimizer': optimizer.state_dict(),
                               'current_epoch': epoch, 'start_batch_idx': batch_idx + 1,
@@ -182,7 +189,7 @@ def train(args):
 
     # save model
     transformer.eval().cpu()
-    save_model_filename = "epoch_" + str(args.epochs) + "_" + str(time.ctime()).replace(' ', '_') + "_" + str(
+    save_model_filename = name_style + "epoch_" + str(args.epochs) + "_" + str(time.ctime()).replace(' ', '_') + "_" + str(
         args.content_weight) + "_" + str(args.style_weight) + ".pth"
     save_model_path = os.path.join(args.save_model_dir, save_model_filename)
     torch.save(transformer.state_dict(), save_model_path)
@@ -256,7 +263,7 @@ def main():
     train_arg_parser = subparsers.add_parser("train", help="parser for training arguments")
     train_arg_parser.add_argument("--epochs", type=int, default=2,
                                   help="number of training epochs, default is 2")
-    train_arg_parser.add_argument("--batch-size", type=int, default=4,
+    train_arg_parser.add_argument("--batch-size", type=int, default=64,
                                   help="batch size for training, default is 4")
     train_arg_parser.add_argument("--dataset", type=str, required=True,
                                   help="path to training dataset, the path should point to a folder "
@@ -285,9 +292,9 @@ def main():
                                   help="weight for style-loss, default is 1e10")
     train_arg_parser.add_argument("--lr", type=float, default=1e-3,
                                   help="learning rate, default is 1e-3")
-    train_arg_parser.add_argument("--log-interval", type=int, default=500,
+    train_arg_parser.add_argument("--log-interval", type=int, default=5,
                                   help="number of images after which the training loss is logged, default is 500")
-    train_arg_parser.add_argument("--checkpoint-interval", type=int, default=2000,
+    train_arg_parser.add_argument("--checkpoint-interval", type=int, default=5,
                                   help="number of batches after which a checkpoint of the trained model will be created")
 
     eval_arg_parser = subparsers.add_parser("eval", help="parser for evaluation/stylizing arguments")

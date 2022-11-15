@@ -1,8 +1,3 @@
-import argparse
-import os
-import time
-import re
-
 import numpy as np
 import torch
 from torchvision import transforms
@@ -10,7 +5,7 @@ import torch.onnx
 from PIL import Image
 import utils
 from transformer_net import TransformerNet
-from vgg_ori import Vgg16
+
 import sys
 
 # style_model = TransformerNet()
@@ -73,7 +68,7 @@ args = type('', (), {})()
 args.content_scale = None
 args.cuda = 0
 args.export_onnx = ""
-args.content_image = '90.jpg'
+args.content_image = 'images/content-images/hoovertowernight.jpg'
 # args.output_image = "result/styled-water3.jpg"
 args.output_image = "result/styled.jpg"
 
