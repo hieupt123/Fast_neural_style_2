@@ -89,7 +89,7 @@ def train(args):
     style = style.repeat(args.batch_size, 1, 1, 1).to(device)
 
     name_style = args.style_image.split("/")[-1]
-    name_style = name_style.split(".")[-1]
+    name_style = name_style.split(".")[0]
     print(name_style)
 
     # Calculate features and gram matrix of style image
@@ -106,7 +106,7 @@ def train(args):
 
     """ Get Sample """
     image_samples = []
-    for path in glob.glob("/Fast_neural_style_images/content-images/*.jpg"):
+    for path in glob.glob("/content/Fast_neural_style_2/images/content-images/*.jpg"):
         image_sample = utils.load_image(path, size=args.image_size)
         image_sample = style_transform(image_sample)
         image_samples += [image_sample]
@@ -263,7 +263,7 @@ def main():
     train_arg_parser = subparsers.add_parser("train", help="parser for training arguments")
     train_arg_parser.add_argument("--epochs", type=int, default=2,
                                   help="number of training epochs, default is 2")
-    train_arg_parser.add_argument("--batch-size", type=int, default=64,
+    train_arg_parser.add_argument("--batch-size", type=int, default=8,
                                   help="batch size for training, default is 4")
     train_arg_parser.add_argument("--dataset", type=str, required=True,
                                   help="path to training dataset, the path should point to a folder "
@@ -292,9 +292,9 @@ def main():
                                   help="weight for style-loss, default is 1e10")
     train_arg_parser.add_argument("--lr", type=float, default=1e-3,
                                   help="learning rate, default is 1e-3")
-    train_arg_parser.add_argument("--log-interval", type=int, default=5,
+    train_arg_parser.add_argument("--log-interval", type=int, default=100,
                                   help="number of images after which the training loss is logged, default is 500")
-    train_arg_parser.add_argument("--checkpoint-interval", type=int, default=5,
+    train_arg_parser.add_argument("--checkpoint-interval", type=int, default=100,
                                   help="number of batches after which a checkpoint of the trained model will be created")
 
     eval_arg_parser = subparsers.add_parser("eval", help="parser for evaluation/stylizing arguments")
