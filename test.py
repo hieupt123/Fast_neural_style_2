@@ -6,6 +6,7 @@ from neural_style import utils
 from neural_style.transformer_net import TransformerNet
 import glob
 import os
+import sys
 
 
 mean = np.array([0.4764, 0.4504, 0.4100])
@@ -88,9 +89,12 @@ import time
 
 t = time.time()
 
-path_images = './images/content-images'
-path_models = './saved_models/rain_princess'
-path_save_image = "./result/rain_princess"
+# path_images = './images/content-images'
+# path_models = './saved_models/rain_princess'
+# path_save_image = "./result/rain_princess"
+path_images = sys.argv[1]
+path_models = sys.argv[2]
+path_save_image = sys.argv[3]
 
 stylize(path_images, path_models, path_save_image)
 print(time.time() - t)
