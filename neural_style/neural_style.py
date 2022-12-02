@@ -111,7 +111,7 @@ def train(args):
     #     image_sample = style_transform(image_sample)
     #     image_samples += [image_sample]
     # image_samples = torch.stack(image_samples)
-    for path in glob.glob("/content/Fast_neural_style_2/images/content-images/*.jpg"):
+    for path in glob.glob("/content/Fast_neural_style_2/images/monalisa/*.jpg"):
         image_sample = utils.load_image(path)
         image_sample = style_transform(image_sample)
         image_sample = image_sample.unsqueeze(0).to(device)
