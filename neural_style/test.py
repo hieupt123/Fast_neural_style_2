@@ -4,7 +4,9 @@ from torchvision import transforms
 import torch.onnx
 from PIL import Image
 import utils
-from transformer_net import TransformerNet
+# from transformer_net import TransformerNet
+from transformer_net_2 import TransformerNet
+
 
 import sys
 

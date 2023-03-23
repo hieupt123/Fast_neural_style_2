@@ -5,35 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="529b41eb-d29f-415d-bd05-ab179ee03255" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/NST_Histogram.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/9ZN7gV_tranh-truu-tuong-55-.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/FYKv9u_tranh-truu-tuong-8-.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/THE_STARRY_NIGHT.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/ben_giles.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/colorfull_style.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/edtaonisl.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/flowers_crop.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/giger_crop.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/idesign_monalisa_04a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/okeffe_red_canna.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/style_Prisma.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/tahiti_guaguin.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/the-scream.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/vg_houses.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/vg_la_cafe.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/vg_olive.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/vg_self.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/vg_wheat_field_cropped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/New_style/weeping_woman_by_pablo_picasso.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/output-images/amber-udnie.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/output-images/candy.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/style-images/rain-princess-cropped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/style-images/sea_wave.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/style-images/udnie.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/style-images/wave_crop.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_style.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_style/neural_style.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_style/neural_style_FNT.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_style/neural_style_FNT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_style/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_style/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +27,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/OpenCV&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

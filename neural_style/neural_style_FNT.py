@@ -11,7 +11,9 @@ from torchvision import datasets
 from torchvision import transforms
 import torch.onnx
 import utils
-from transformer_net import TransformerNet
+# from transformer_net import TransformerNet
+from transformer_net_2 import TransformerNet
+
 from vgg import Vgg16
 import sys
 import random
