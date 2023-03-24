@@ -19,17 +19,17 @@ class Residual_block(nn.Module):
     residual = x
     out = self.relu(self.batchnorm(self.conv2d(self.batchnorm(x))))
     out = self.batchnorm(self.conv2d(out))
-    return out + x
+    return out + residual
 
 class TransformerNet(nn.Module):
   def __init__(self):
     super(TransformerNet, self).__init__()
     # Downsampling
-    self.down_1 = nn.Conv2d(in_channels=3, out_channels=32, kernel_size=9, stride=1, padding = 9//2) 
+    self.conv1 = nn.Conv2d(in_channels=3, out_channels=32, kernel_size=9, stride=1, padding = 9//2) 
     self.BN_1 = torch.nn.BatchNorm2d(num_features=32)
-    self.down_2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=2, padding = 1)
+    self.down_1 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=2, padding = 1)
     self.BN_2 = torch.nn.BatchNorm2d(num_features=64)
-    self.down_3 = nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=2, padding = 1)
+    self.down_2 = nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=2, padding = 1)
     self.BN_3 = torch.nn.BatchNorm2d(num_features=128)
     # Residual connect
     self.res_1 = Residual_block(128)
@@ -42,7 +42,8 @@ class TransformerNet(nn.Module):
     self.BN_4 = torch.nn.BatchNorm2d(num_features=64)
     self.up_2 = nn.ConvTranspose2d(in_channels=64, out_channels=32, kernel_size=3, stride=2, padding = 1, output_padding= 1)
     self.BN_5 = torch.nn.BatchNorm2d(num_features=32)
-    self.up_3 = nn.ConvTranspose2d(in_channels=32, out_channels=3, kernel_size=9, stride=1, padding = 9//2)
+    # self.up_3 = nn.ConvTranspose2d(in_channels=32, out_channels=3, kernel_size=9, stride=1, padding = 9//2)
+    self.conv2 = nn.Conv2d(in_channels=32, out_channels=3, kernel_size=9, stride=1, padding = 9//2)
     self.BN_6 = torch.nn.BatchNorm2d(num_features=3)
 
     self.relu = nn.ReLU()
@@ -50,11 +51,11 @@ class TransformerNet(nn.Module):
     
 
   def forward(self, x):
-    y = self.relu(self.BN_1(self.down_1(x)))
+    y = self.relu(self.BN_1(self.conv1(x)))
     # print(y.shape)
-    y = self.relu(self.BN_2(self.down_2(y)))
+    y = self.relu(self.BN_2(self.down_1(y)))
     # print(y.shape)
-    y = self.relu(self.BN_3(self.down_3(y)))
+    y = self.relu(self.BN_3(self.down_2(y)))
     # print(y.shape)
 
     # print()
@@ -74,6 +75,6 @@ class TransformerNet(nn.Module):
     # print(y.shape)
     y = self.relu(self.BN_5(self.up_2(y)))
     # print(y.shape)
-    y = self.tanh(self.BN_6(self.up_3(y)))
+    y = self.tanh(self.BN_6(self.conv2(y)))
     # print(y.shape)
     return y
