@@ -1,6 +1,9 @@
 """
 Image transformation networks
 """
+import torch
+from torch import nn
+
 class Residual_block(nn.Module):
   """Residual block
   Architecture: https://arxiv.org/pdf/1610.02915.pdf
@@ -23,8 +26,11 @@ class TransformerNet(nn.Module):
     super(TransformerNet, self).__init__()
     # Downsampling
     self.down_1 = nn.Conv2d(in_channels=3, out_channels=32, kernel_size=9, stride=1, padding = 9//2) 
+    self.BN_1 = torch.nn.BatchNorm2d(num_features=32)
     self.down_2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=2, padding = 1)
+    self.BN_2 = torch.nn.BatchNorm2d(num_features=64)
     self.down_3 = nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=2, padding = 1)
+    self.BN_3 = torch.nn.BatchNorm2d(num_features=128)
     # Residual connect
     self.res_1 = Residual_block(128)
     self.res_2 = Residual_block(128)
@@ -33,17 +39,22 @@ class TransformerNet(nn.Module):
     self.res_5 = Residual_block(128)
     # Upsampling
     self.up_1 = nn.ConvTranspose2d(in_channels=128, out_channels=64, kernel_size=3, stride=2, padding=1, output_padding= 1)
+    self.BN_4 = torch.nn.BatchNorm2d(num_features=64)
     self.up_2 = nn.ConvTranspose2d(in_channels=64, out_channels=32, kernel_size=3, stride=2, padding = 1, output_padding= 1)
-    self.up_3 = nn.ConvTranspose2d(in_channels=32, out_channels=3, kernel_size=9, stride=1, padding = 4)
+    self.BN_5 = torch.nn.BatchNorm2d(num_features=32)
+    self.up_3 = nn.ConvTranspose2d(in_channels=32, out_channels=3, kernel_size=9, stride=1, padding = 9//2)
+    self.BN_6 = torch.nn.BatchNorm2d(num_features=3)
 
     self.relu = nn.ReLU()
+    self.tanh = nn.Tanh()
+    
 
   def forward(self, x):
-    y = self.relu(self.down_1(x))
+    y = self.relu(self.BN_1(self.down_1(x)))
     # print(y.shape)
-    y = self.relu(self.down_2(y))
+    y = self.relu(self.BN_2(self.down_2(y)))
     # print(y.shape)
-    y = self.relu(self.down_3(y))
+    y = self.relu(self.BN_3(self.down_3(y)))
     # print(y.shape)
 
     # print()
@@ -59,10 +70,10 @@ class TransformerNet(nn.Module):
     # print(y.shape)
 
     # print()
-    y = self.relu(self.up_1(y))
+    y = self.relu(self.BN_4(self.up_1(y)))
     # print(y.shape)
-    y = self.relu(self.up_2(y))
+    y = self.relu(self.BN_5(self.up_2(y)))
     # print(y.shape)
-    y = self.up_3(y)
+    y = self.tanh(self.BN_6(self.up_3(y)))
     # print(y.shape)
     return y

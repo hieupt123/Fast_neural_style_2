@@ -74,6 +74,6 @@ args.content_image = 'images/content-images/hoovertowernight.jpg'
 # args.output_image = "result/styled-water3.jpg"
 args.output_image = "result/styled.jpg"
 
-args.model = "saved_models/ckpt_epoch_3_batch_id_6000.pth.tar"
+args.model = "saved_models/mosaic_ckpt_epoch_1_batch_id_4000.pth.tar"
 stylize(args)
 print(time.time() - t)

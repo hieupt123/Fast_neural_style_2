@@ -202,6 +202,7 @@ def train(args):
                               'current_epoch': epoch, 'start_batch_idx': batch_idx + 1,
                               'content_loss': content_loss.item(), 'style_loss': style_loss.item(),
                               'total_loss': total_loss.item()}
+                print(f"Save chekpoint to: {ckpt_model_path}")
                 save_checkpoint(checkpoint, ckpt_model_path)
 
                 transformer.to(device).train()
