@@ -17,9 +17,9 @@ class Residual_block(nn.Module):
 
   def forward(self, x):
     residual = x
-    out = self.relu(self.batchnorm(self.conv2d(self.batchnorm(x))))
+    out = self.relu(self.batchnorm(self.conv2d(x)))
     out = self.batchnorm(self.conv2d(out))
-    return out + residual
+    return self.relu(out + residual)
 
 class TransformerNet(nn.Module):
   def __init__(self):
