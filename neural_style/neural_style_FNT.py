@@ -107,41 +107,43 @@ def train(args):
         start_batch_idx = 0
 
     """ Get Sample """
-    # image_samples = []
-    # for path in glob.glob("/content/Fast_neural_style_2/images/content-images/*.jpg"):
-    #     image_sample = utils.load_image(path, size=args.image_size)
-    #     image_sample = style_transform(image_sample)
-    #     image_samples += [image_sample]
-    # image_samples = torch.stack(image_samples)
-    for path in glob.glob("/content/Fast_neural_style_2/images/monalisa/*.jpg"):
-        image_sample = utils.load_image(path)
+    image_samples = []
+    for path in glob.glob("/content/Fast_neural_style_2/images/content-images/*.jpg"):
+        image_sample = utils.load_image(path, size=args.image_size)
         image_sample = style_transform(image_sample)
-        image_sample = image_sample.unsqueeze(0).to(device)
+        image_samples += [image_sample]
+    image_samples = torch.stack(image_samples)
 
 
-    # def save_sample(epoch, batch_id):
-    #     """ Evaluates the model and saves image samples """
-    #     transformer.eval()
-    #     with torch.no_grad():
-    #         output = transformer(image_samples.to(device))
-    #     image_grid = denormalize(torch.cat((image_samples.cpu(), output.cpu()), 2))
-    #     path_save_image_test = os.path.join(args.checkpoint_model_dir, "test")
-    #     if os.path.exists(path_save_image_test) == False:
-    #         os.makedirs(path_save_image_test)
-    #     save_image(image_grid, f"{path_save_image_test}/epoch_{epoch}_batch_id_{batch_id}.jpg", nrow=4)
-    #     transformer.train()
 
     def save_sample(epoch, batch_id):
         """ Evaluates the model and saves image samples """
         transformer.eval()
         with torch.no_grad():
-            output = transformer(image_sample.to(device))
-        image = denormalize(output[0])
+            output = transformer(image_samples.to(device))
+        image_grid = denormalize(torch.cat((image_samples.cpu(), output.cpu()), 2))
         path_save_image_test = os.path.join(args.checkpoint_model_dir, "test")
         if os.path.exists(path_save_image_test) == False:
             os.makedirs(path_save_image_test)
-        save_image(image, f"{path_save_image_test}/epoch_{epoch}_batch_id_{batch_id}.jpg")
+        save_image(image_grid, f"{path_save_image_test}/epoch_{epoch}_batch_id_{batch_id}.jpg", nrow=4)
         transformer.train()
+
+    # for path in glob.glob("/content/Fast_neural_style_2/images/monalisa/*.jpg"):
+    #     image_sample = utils.load_image(path)
+    #     image_sample = style_transform(image_sample)
+    #     image_sample = image_sample.unsqueeze(0).to(device)
+    #
+    # def save_sample(epoch, batch_id):
+    #     """ Evaluates the model and saves image samples """
+    #     transformer.eval()
+    #     with torch.no_grad():
+    #         output = transformer(image_sample.to(device))
+    #     image = denormalize(output[0])
+    #     path_save_image_test = os.path.join(args.checkpoint_model_dir, "test")
+    #     if os.path.exists(path_save_image_test) == False:
+    #         os.makedirs(path_save_image_test)
+    #     save_image(image, f"{path_save_image_test}/epoch_{epoch}_batch_id_{batch_id}.jpg")
+    #     transformer.train()
 
     ##################
     for epoch in range(current_epoch, args.epochs):

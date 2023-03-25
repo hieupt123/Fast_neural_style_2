@@ -75,6 +75,7 @@ class TransformerNet(nn.Module):
     # print(y.shape)
     y = self.relu(self.BN_5(self.up_2(y)))
     # print(y.shape)
-    y = self.tanh(self.BN_6(self.conv2(y)))
+    # y = self.tanh(self.BN_6(self.conv2(y)))
+    y = self.conv2(y)
     # print(y.shape)
     return y

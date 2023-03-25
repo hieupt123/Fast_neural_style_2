@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="529b41eb-d29f-415d-bd05-ab179ee03255" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neural_style/neural_style_FNT.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_style/neural_style_FNT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_style/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_style/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neural_style/transformer_net_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_style/transformer_net_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/~$sidual.docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,13 +27,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "E:/Fast_neural_style_2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/FNT&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Fast_neural_style_2" />
