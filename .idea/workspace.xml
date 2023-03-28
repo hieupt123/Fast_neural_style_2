@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="529b41eb-d29f-415d-bd05-ab179ee03255" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_style/neural_style_FNT.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_style/neural_style_FNT.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neural_style/transformer_net_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_style/transformer_net_2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/mosaic_ckpt_epoch_1_batch_id_4000.pth.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_style/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_style/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saved_models/mosaic_ckpt_epoch_1_batch_id_2000.pth.tar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/styled.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/styled.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_FNT.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_FNT.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +35,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/FNT&quot;
+    &quot;last_opened_file_path&quot;: &quot;E:/Fast_neural_style_2&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -83,9 +86,24 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test_FNT.py" type="tests" factoryName="Autodetect" temporary="true">
+      <module name="Fast_neural_style_2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_FNT.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.test (1)" />
+        <item itemvalue="Python tests.test_FNT.py" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>

@@ -18,6 +18,24 @@ import sys
 mean = np.array([0.4764, 0.4504, 0.4100])
 std = np.array([0.2707, 0.2657, 0.2808])
 
+class UnNormalize(object):
+    def __init__(self, mean, std):
+        self.mean = mean
+        self.std = std
+
+    def __call__(self, tensor):
+        """
+        Args:
+            tensor (Tensor): Tensor image of size (C, H, W) to be normalized.
+        Returns:
+            Tensor: Normalized image.
+        """
+        for t, m, s in zip(tensor, self.mean, self.std):
+            t.mul_(s).add_(m)
+            # The normalize code -> t.sub_(m).div_(s)
+        return tensor
+
+
 def denormalize(tensors):
     """ Denormalizes image tensors using mean and std """
     for c in range(3):
@@ -27,7 +45,10 @@ def denormalize(tensors):
 
 def deprocess(image_tensor):
     """ Denormalizes and rescales image tensor """
-    img = denormalize(image_tensor)
+    # img = denormalize(image_tensor)
+    unorm = UnNormalize(mean=mean, std=std)
+    img = image_tensor
+    unorm(img)
     img *= 255
     image_np = torch.clamp(img, 0, 255).numpy().astype(np.uint8)
     image_np = image_np.transpose(1, 2, 0)
@@ -74,6 +95,7 @@ args.content_image = 'images/content-images/amber.jpg'
 # args.output_image = "result/styled-water3.jpg"
 args.output_image = "styled.jpg"
 
-args.model = "saved_models/mosaic_ckpt_epoch_1_batch_id_2000.pth.tar"
+args.model = "saved_models/mosaic_ckpt_epoch_0_batch_id_3000.pth.tar"
 stylize(args)
 print(time.time() - t)
+

@@ -147,10 +147,9 @@ def train(args):
 
     ##################
     for epoch in range(current_epoch, args.epochs):
-        transformer.train()
         count = 0
         for batch_idx, (x, _) in enumerate(train_loader):
-
+            transformer.train()
             # set parameter of checkpoint
             if epoch == current_epoch and batch_idx < start_batch_idx:
                 n_batch = len(x)
@@ -159,7 +158,6 @@ def train(args):
 
             n_batch = len(x)
             count += n_batch
-            optimizer.zero_grad()
 
             x = x.to(device)
             y = transformer(x)
@@ -184,6 +182,9 @@ def train(args):
             style_loss *= args.style_weight
 
             total_loss = content_loss + style_loss
+
+            optimizer.zero_grad()
+
             total_loss.backward()
             optimizer.step()
 

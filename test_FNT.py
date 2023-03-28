@@ -7,6 +7,7 @@ from neural_style.transformer_net import TransformerNet
 import glob
 import os
 import sys
+from pathlib import Path
 
 
 mean = np.array([0.4764, 0.4504, 0.4100])
@@ -75,7 +76,7 @@ def transform_style_image(path_image, path_model, path_save_image="result"):
     save_image(image_grid, path_save)
 
 if __name__ == "__main__":
-    path_image = 'images/content-images/0032.png'
-    path_model = 'saved_models/monalisa/idesign_monalisa_04a_ckpt_epoch_7_batch_id_19800.pth.tar'
-    # path_save_image = "result/vg_la_cafe"
-    transform_style_image(path_image, path_model)
+    path_image = 'images/content-images/amber.jpg'
+    path_model = 'saved_models/candy/candy_ckpt_epoch_9_batch_id_4400.pth.tar'
+    path_save_image = "styled.jpg"
+    transform_style_image(path_image, path_model, path_save_image)
