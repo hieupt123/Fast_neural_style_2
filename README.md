@@ -52,8 +52,8 @@
  Input:
   | Content image | Style image| 
   | --- | --- |
-  | <img src="./images/content-images/amber.jpg" width="256" height="256"> | <img src="./images/style-images/mosaic.jpg" width="256" height="256"> ||
+  | <img src="./images/content-images/amber.jpg" width="256" height="256"> | <img src="./images/style-images/weeping_woman_by_pablo_picasso.jpg" width="256" height="256"> ||
   
   Output: 
   
-  <img src="./images/output-images/Preserving_color_method.png" width="256" height="256">
+  <img src="./images/output-images/Perserving_color.png" width="256" height="256">
