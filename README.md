@@ -47,7 +47,7 @@
   | Output | <img src="./images/output-images/amber-mosaic.jpg" width="200" height="200"> | <img src="./images/output-images/amber-rain_princess.jpg" width="200" height="200"> | <img src="./images/output-images/amber-vg_la_cafe.jpg" width="200" height="200"> | |
   
 #### 3. Preserving Color
-  Triển khai dựa theo bài báo [Preserving Color in Neural Artistic Style Transfer]  (https://www.researchgate.net/publication/304163747_Preserving_Color_in_Neural_Artistic_Style_Transfer)
+  Triển khai dựa theo bài báo [Preserving Color in Neural Artistic Style Transfer](https://www.researchgate.net/publication/304163747_Preserving_Color_in_Neural_Artistic_Style_Transfer)
   
  Input:
   | Content image | Style image| 
