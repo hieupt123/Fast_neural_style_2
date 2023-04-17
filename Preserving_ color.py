@@ -1,27 +1,25 @@
+"""
+Preserving color of original image after change style
+"""
+
 import numpy as np
 import os.path
-import sys
 
 import torch
-import torch.nn as nn
 import torch.optim as optim
 from PIL import Image
 import torchvision.transforms as transforms
-import torchvision.models as models
 from torchvision.utils import save_image
 from VGG import VGG
 import cal_mean_std
-import cv2
-
-# model = models.vgg19(pretrained=True).features
-model = models.vgg19(pretrained=True)
+from pathlib import Path
 
 def load_image(image_name):
     image = Image.open(image_name)
     image = loader(image).unsqueeze(0)
     return image.to(device)
 
-def getNameFile(pathFile):
+def getFileName(pathFile):
     path = Path(pathFile)
     return path.stem
 

@@ -6,26 +6,35 @@ import numpy as np
 mean = [0.4763, 0.4507, 0.4094]
 std = [0.2702, 0.2652, 0.2811]
 
-def load_image(filename, size=None, scale=None):
+def load_image(filename, size=None):
     img = Image.open(filename).convert('RGB')
     if size is not None:
         img = img.resize((size, size), Image.ANTIALIAS)
-    elif scale is not None:
-        img = img.resize((int(img.size[0] / scale), int(img.size[1] / scale)), Image.ANTIALIAS)
     return img
 
 
+class UnNormalize(object):
+    def __init__(self, mean, std):
+        self.mean = mean
+        self.std = std
 
-def denormalize(tensors):
-    """ Denormalizes image tensors using mean and std """
-    for c in range(3):
-        tensors[:, c].mul_(std[c]).add_(mean[c])
-    return tensors
-
+    def __call__(self, tensor):
+        """
+        Args:
+            tensor (Tensor): Tensor image of size (C, H, W) to be normalized.
+        Returns:
+            Tensor: Normalized image.
+        """
+        for t, m, s in zip(tensor, self.mean, self.std):
+            t.mul_(s).add_(m)
+            # The normalize code -> t.sub_(m).div_(s)
+        return tensor
 
 def deprocess(image_tensor):
     """ Denormalizes and rescales image tensor """
-    img = denormalize(image_tensor)
+    unnorm = UnNormalize(mean=mean, std=std)
+    img = image_tensor
+    unnorm(img)
     img *= 255
     image_np = torch.clamp(img, 0, 255).numpy().astype(np.uint8)
     image_np = image_np.transpose(1, 2, 0)

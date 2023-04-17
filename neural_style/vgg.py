@@ -1,17 +1,17 @@
 from collections import namedtuple
+from torchvision.models import vgg16, VGG16_Weights
+from torch import nn
 
-import torch
-from torchvision import models
-
-
-class Vgg16(torch.nn.Module):
+class VGG16(nn.Module):
     def __init__(self, requires_grad=False):
-        super(Vgg16, self).__init__()
-        vgg_pretrained_features = models.vgg16(pretrained=True).features
-        self.slice1 = torch.nn.Sequential()
-        self.slice2 = torch.nn.Sequential()
-        self.slice3 = torch.nn.Sequential()
-        self.slice4 = torch.nn.Sequential()
+        super(VGG16, self).__init__()
+
+        weights = VGG16_Weights.DEFAULT
+        vgg_pretrained_features = vgg16(weights=weights).features
+        self.slice1 = nn.Sequential()
+        self.slice2 = nn.Sequential()
+        self.slice3 = nn.Sequential()
+        self.slice4 = nn.Sequential()
         for x in range(4):
             self.slice1.add_module(str(x), vgg_pretrained_features[x])
         for x in range(4, 9):

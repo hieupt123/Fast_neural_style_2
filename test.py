@@ -1,68 +1,16 @@
-import numpy as np
+"""
+Style transformer using method Faster Neural Style
+"""
+
 import torch
 from torchvision import transforms
-import torch.onnx
-from PIL import Image
 from neural_style import utils
-# from neural_style.transformer_net import TransformerNet
-from neural_style.transformer_net_2 import TransformerNet
+from neural_style.transformer_net import TransformerNet
 
+def transformstyle(path_image, path_save, weight):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-import sys
-
-# style_model = TransformerNet()
-# state_dict = torch.load('saved_models/ckpt_epoch_0_batch_id_300.pth')
-# print(state_dict.keys())
-# sys.exit()
-
-mean = np.array([0.4764, 0.4504, 0.4100])
-std = np.array([0.2707, 0.2657, 0.2808])
-
-class UnNormalize(object):
-    def __init__(self, mean, std):
-        self.mean = mean
-        self.std = std
-
-    def __call__(self, tensor):
-        """
-        Args:
-            tensor (Tensor): Tensor image of size (C, H, W) to be normalized.
-        Returns:
-            Tensor: Normalized image.
-        """
-        for t, m, s in zip(tensor, self.mean, self.std):
-            t.mul_(s).add_(m)
-            # The normalize code -> t.sub_(m).div_(s)
-        return tensor
-
-
-def denormalize(tensors):
-    """ Denormalizes image tensors using mean and std """
-    for c in range(3):
-        tensors[:, c].mul_(std[c]).add_(mean[c])
-    return tensors
-
-
-def deprocess(image_tensor):
-    """ Denormalizes and rescales image tensor """
-    # img = denormalize(image_tensor)
-    unorm = UnNormalize(mean=mean, std=std)
-    img = image_tensor
-    unorm(img)
-    img *= 255
-    image_np = torch.clamp(img, 0, 255).numpy().astype(np.uint8)
-    image_np = image_np.transpose(1, 2, 0)
-    return image_np
-
-def save_image(filename, data):
-    img = deprocess(data)
-    img = Image.fromarray(img)
-    img.save(filename)
-
-def stylize(args):
-    device = torch.device("cuda" if args.cuda else "cpu")
-
-    content_image = utils.load_image(args.content_image, scale=args.content_scale)
+    content_image = utils.load_image(path_image)
     content_transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Lambda(lambda x: x.mul(255))
@@ -72,7 +20,7 @@ def stylize(args):
 
     with torch.no_grad():
         style_model = TransformerNet()
-        state_dict = torch.load(args.model)
+        state_dict = torch.load(weight)
         style_model.load_state_dict(state_dict["state_dict"])
 
         print('Total loss: ', state_dict['total_loss'])
@@ -80,22 +28,17 @@ def stylize(args):
         style_model.to(device)
         style_model.eval()
         output = style_model(content_image).cpu()
-    save_image(args.output_image, output[0])
-
+    utils.save_image(path_save, output[0])
 
 import time
+if __name__ == '__main__':
+    t = time.time()
+    path_image = 'images/content-images/amber.jpg'
+    path_save = "style_trans.jpg"
 
-t = time.time()
+    # load model
+    TransformerNetWEIGHT = "saved_models/rain_princess/rain_princess.pth.tar"
+    transformstyle(path_image, path_save, TransformerNetWEIGHT)
 
-args = type('', (), {})()
-args.content_scale = None
-args.cuda = 0
-args.export_onnx = ""
-args.content_image = 'images/content-images/amber.jpg'
-# args.output_image = "result/styled-water3.jpg"
-args.output_image = "styled.jpg"
-
-args.model = "saved_models/mosaic_ckpt_epoch_0_batch_id_3000.pth.tar"
-stylize(args)
-print(time.time() - t)
+    print(time.time() - t)
 

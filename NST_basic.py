@@ -1,6 +1,7 @@
+"""
+Using method Neural style transformer
+"""
 import os.path
-import sys
-
 import torch
 import torch.nn as nn
 import torch.optim as optim
