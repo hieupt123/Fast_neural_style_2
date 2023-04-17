@@ -5,44 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="529b41eb-d29f-415d-bd05-ab179ee03255" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/cal_mean_std.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Link github.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Preserving_ color.py" beforeDir="false" afterPath="$PROJECT_DIR$/Preserving_ color.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Residual.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/monalisa/idesign_monalisa_04a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/output-images/amber-candy.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/output-images/amber-candy.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/output-images/amber-mosaic.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/output-images/amber-mosaic.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/output-images/amber-rain-princess.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/style-images/FYKv9u_tranh-truu-tuong-8-.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/style-images/THE_STARRY_NIGHT.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/style-images/idesign_monalisa_04a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/style-images/rain-princess.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/style-images/vg_wheat_field_cropped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_style/LoadImg.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_style/neural_style_FNT.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_style/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_style/transformer_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_style/transformer_net.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_style/transformer_net_2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_style/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_style/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_style/vgg.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_style/vgg.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/Prisma/style_Prisma_ckpt_epoch_5_batch_id_2300.pth.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/The_stay_night/ckpt_epoch_3_batch_id_14000.pth.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/candy/candy_ckpt_epoch_9_batch_id_4400.pth.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/monalisa/idesign_monalisa_04a_ckpt_epoch_7_batch_id_19800.pth.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/mosaic_ckpt_epoch_0_batch_id_3000.pth.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/rain_princess/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/rain_princess/rain-princess-cropped_ckpt_epoch_9_batch_id_4900.pth.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/tranh_truu_tuong_8/FYKv9u_tranh-truu-tuong-8-_ckpt_epoch_0_batch_id_4400.pth.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/tranh_truu_tuong_8/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/vg_la_coffe/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/vg_la_coffe/vg_la_cafe_ckpt_epoch_1_batch_id_3900.pth.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/weeping_woman/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_models/weeping_woman/weeping_woman_by_pablo_picasso_ckpt_epoch_0_batch_id_3700.pth.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/styled.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NST_basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/NST_basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/content-images/16.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_FNT.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +47,11 @@
       <recent name="E:\Fast_neural_style_2" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Fast_neural_style_2\images\output-images" />
       <recent name="E:\Fast_neural_style_2\saved_models\wave_crop" />
       <recent name="E:\Fast_neural_style_2\saved_models\weeping_woman" />
       <recent name="E:\Fast_neural_style_2\saved_models\vg_la_coffe" />
       <recent name="E:\Fast_neural_style_2\saved_models\rain_princess" />
-      <recent name="E:\Fast_neural_style_2\saved_models\mosaic" />
     </key>
   </component>
   <component name="RunManager" selected="Python.test (1)">

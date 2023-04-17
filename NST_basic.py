@@ -1,5 +1,5 @@
 """
-Using method Neural style transformer
+Using method Neural style transfer
 """
 import os.path
 import torch

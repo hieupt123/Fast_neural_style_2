@@ -1,5 +1,5 @@
 """
-Style transformer using method Faster Neural Style
+Style transfer using method Faster Neural Style
 """
 
 import torch
@@ -34,7 +34,7 @@ import time
 if __name__ == '__main__':
     t = time.time()
     path_image = 'images/content-images/amber.jpg'
-    path_save = "style_trans.jpg"
+    path_save = "style.jpg"
 
     # load model
     TransformerNetWEIGHT = "saved_models/rain_princess/rain_princess.pth.tar"
