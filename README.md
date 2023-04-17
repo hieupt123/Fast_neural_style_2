@@ -42,7 +42,7 @@
   
   |Style name | Mosaic | rain_princess | vg_la_cafe |
   | --- | --- | --- | --- |
-  | Style image | <img src="./images/style-images/mosaic.jpg" width="256" height="256"> | <img src="./images/style-images/rain_princess.jpeg" width="256" height="256">   | <img src="./images/style-images/vg_la_cafe.jpg" width="256" height="256"> |
+  | Style image | <img src="./images/style-images/mosaic.jpg" width="200" height="200"> | <img src="./images/style-images/rain_princess.jpeg" width="200" height="200">   | <img src="./images/style-images/vg_la_cafe.jpg" width="200" height="200"> |
   | Output | <img src="./images/output-images/amber-mosaic.jpg" width="256" height="256"> | <img src="./images/output-images/amber-rain_princess.jpg" width="256" height="256"> | <img src="./images/output-images/amber-vg_la_cafe.jpg" width="256" height="256"> | |
   
 #### 3. Preserving Color
