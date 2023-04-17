@@ -15,7 +15,7 @@
 | --- | --- | --- | --- | 
 | Phạm Trung Hiếu | 19521512 | 19521512@gm.uit.edu.vn |[hieupt123](https://github.com/hieupt123) |
 | Võ Khoa Nam | 19521877 | 19521877@gm.uit.edu.vn | [khoanamgit](https://github.com/khoanamgit) |
-| Trịnh Minh Hoàng | 19521547 | 19521547@gm.uit.edu.vn |  |
+| Trịnh Minh Hoàng | 19521547 | 19521547@gm.uit.edu.vn | [minhhoangit](https://github.com/minhhoanggit) |
 
 ### Đề tài: Style transfer
 * Công việc: Triển khai 3 phương pháp thay đổi style hình ảnh
