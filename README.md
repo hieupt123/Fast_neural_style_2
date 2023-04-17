@@ -56,4 +56,4 @@
   
   Output: 
   
-  <img src="./images/output-images/Perserving_color.png" width="256" height="256">
+  <img src="./images/output-images/Perserving_color_method.png" width="256" height="256">
