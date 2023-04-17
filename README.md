@@ -17,5 +17,33 @@
 | Võ Khoa Nam | 19521877 | 19521877@gm.uit.edu.vn | [khoanamgit](https://github.com/khoanamgit) |
 | Trịnh Minh Hoàng | 19521547 | 19521547@gm.uit.edu.vn |  |
 
-#<img src="https://your-image-url.type" width="100" height="100">
-<amber src="https://user-images.githubusercontent.com/81352814/232384079-40ed042a-83e7-4cc3-b00c-79c86320cf78.jpg" width="100" height="100">
+### Đề tài: Style transfer
+* Công việc: Triển khai 3 phương pháp thay đổi style hình ảnh
+
+#### 1. Neural style tranfer 
+  Triển khai dựa theo bài báo [A Neural Algorithm of Artistic Style](https://arxiv.org/pdf/1508.06576v2.pdf)
+
+  Input:
+  | Content image | Style image| 
+  | --- | --- |
+  | <img src="./images/content-images/amber.jpg" width="256" height="256"> | <img src="./images/style-images/mosaic.jpg" width="256" height="256"> ||
+  
+  Output: 
+  <img src="ddd" width="256" height="256">
+
+#### 2. Faster Neural style
+  Triển khai dựa theo bài báo [Perceptual Losses for Real-Time Style Transfer and Super-Resolution](https://arxiv.org/pdf/1603.08155v1.pdf)
+  
+  Kết quả
+  
+  Content image:
+  
+  <img src="./images/content-images/amber.jpg" width="256" height="256">
+  
+  |Style name | Mosaic | rain_princess | vg_la_cafe |
+  | --- | --- | --- | --- |
+  | Style image | <img src="./images/style-images/mosaic.jpg" width="256" height="256"> | <img src="./images/style-images/rain_princess.jpeg" width="256" height="256">   | <img src="./images/style-images/vg_la_cafe.jpg" width="256" height="256"> |
+  | Output | <img src="./images/output-images/amber-mosaic.jpg" width="256" height="256"> | <img src="./images/output-images/amber-rain_princess.jpg" width="256" height="256"> | <img src="./images/output-images/amber-vg_la_cafe.jpg" width="256" height="256"> | |
+  
+#### 3. Preserving Color
+  Triển khai dựa theo bài báo [Preserving Color in Neural Artistic Style Transfer](https://www.researchgate.net/publication/304163747_Preserving_Color_in_Neural_Artistic_Style_Transfer)
