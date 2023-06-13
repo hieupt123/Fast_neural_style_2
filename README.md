@@ -19,7 +19,7 @@
 
 ### Đề tài: Style transfer
 * Công việc: Triển khai 3 phương pháp thay đổi style hình ảnh
-
+* Web demo: [image_style_transfer](https://huggingface.co/spaces/hieupt/image_style_transfer)
 #### 1. Neural style tranfer 
   Triển khai dựa theo bài báo [A Neural Algorithm of Artistic Style](https://arxiv.org/pdf/1508.06576v2.pdf)
 
