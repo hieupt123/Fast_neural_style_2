@@ -17,17 +17,18 @@ def transformstyle(path_image, path_save, weight):
     ])
     content_image = content_transform(content_image)
     content_image = content_image.unsqueeze(0).to(device)
-
+    
+    # load model
+    style_model = TransformerNet()
+    state_dict = torch.load(weight)
+    style_model.load_state_dict(state_dict["state_dict"])
+    print('Total loss: ', state_dict['total_loss'])
+    style_model.to(device)
+    
+    style_model.eval()
     with torch.no_grad():
-        style_model = TransformerNet()
-        state_dict = torch.load(weight)
-        style_model.load_state_dict(state_dict["state_dict"])
-
-        print('Total loss: ', state_dict['total_loss'])
-
-        style_model.to(device)
-        style_model.eval()
         output = style_model(content_image).cpu()
+        
     utils.save_image(path_save, output[0])
 
 import time
